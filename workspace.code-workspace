@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "components",
+			"path": "..\\login\\components"
+		},
+		{
+			"name": "HappyStation",
+			"path": "."
+		},
+		{
+			"name": "screens",
+			"path": "..\\login\\screens"
+		}
+	],
+	"settings": {}
+}
