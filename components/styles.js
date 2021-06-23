@@ -10,12 +10,13 @@ export const Colors = {
     secondary:"#E5E7EB",
     tertiary:'#1F2937',
     darkLight:'#9CA3AF',
-    brand:'#6D28D9',
+    brand:'#6C9BD2',
     green:'#10B981',
     red:'#EF4444',
+    blue:'#3B5998'
 };
 
-const {primary,secondary,tertiary,darkLight,brand,green,red} = Colors;
+const {primary,secondary,tertiary,darkLight,brand,green,red,blue} = Colors;
 
 export const StyledContainer = styled.View`
     flex:1;
@@ -129,12 +130,20 @@ export const WelcomeImage = styled.Image`
      background-color:${green};
      flex-direction:row;
      justify-content:center;
+    `};
+    ${(props) => props.facebook == true &&`
+     background-color:${blue};
+     flex-direction:row;
+     justify-content:center;
     `}
  `;
  export const ButtonText = styled.Text`
     color: ${primary};
     font-size: 16px;
     ${(props) => props.google == true &&`
+      padding:25px
+    `};
+    ${(props) => props.facebook == true &&`
       padding:25px
     `}
  `
@@ -170,4 +179,5 @@ export const TextLink = styled.TouchableOpacity`
 export const TextLinkContent = styled.Text`
     color: ${brand};
     font-size:15px;
-`
+`;
+

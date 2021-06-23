@@ -34,8 +34,8 @@ import {
 import {View} from 'react-native';
 
 //Color
-const {brand,primary} = Colors;
-const Login = () => {
+const {brand,primary,blue} = Colors;
+const Login = ({navigation}) => {
     const [hidePassword,setHidepassword]= useState(true)
     return (
         <StyledContainer>
@@ -79,7 +79,7 @@ const Login = () => {
                            setHidepassword={setHidepassword}
                         />
                         <MsgBox>...</MsgBox>
-                        <StyledButton onPress={handleSubmit}>
+                        <StyledButton onPress={()=>navigation.navigate('Welcome')}>
                             <ButtonText>Login</ButtonText>
                         </StyledButton>
                         <Line/>
@@ -87,10 +87,14 @@ const Login = () => {
                             <Fontisto name="google" color={primary} size={25}/>
                             <ButtonText google={true}>Sign in with Google</ButtonText>
                         </StyledButton>
+                        <StyledButton facebook={true} onPress={handleSubmit}>
+                            <Fontisto name="facebook" color={primary} size={25}/>
+                            <ButtonText google={true}>Sign in with Google</ButtonText>
+                        </StyledButton>
                         <ExtraView>
                             <ExtraText>Don't have an Account already?</ExtraText>
                             <TextLink>
-                                <TextLinkContent>Sign Up</TextLinkContent>
+                                <TextLinkContent onPress={()=>navigation.navigate('Signup')} >Sign Up</TextLinkContent>
                             </TextLink>
                         </ExtraView>
                         </StyledFormArea>

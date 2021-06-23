@@ -38,7 +38,7 @@ import {View} from 'react-native';
 
 //Color
 const {brand,primary} = Colors;
-const Welcome = () => {
+const Welcome = ({navigation}) => {
     const [hidePassword,setHidepassword]= useState(true);
 
     return(
@@ -55,8 +55,8 @@ const Welcome = () => {
                  <StyledFormArea>
                 <Avatar resizeMode="cover" source ={require('./../assets/loginimg1.png')}/>
                 <Line/>
-                        <StyledButton onPress={() =>{}}>
-                            <ButtonText>Log Out</ButtonText>
+                        <StyledButton onPress={()=>navigation.navigate('HomeScreen')}>
+                            <ButtonText>Next</ButtonText>
                         </StyledButton>
                 </StyledFormArea>
                 </WelcomeContainer>

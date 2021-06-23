@@ -38,7 +38,7 @@ import {View,TouchableOpacity} from 'react-native';
 
 //Color
 const {brand,primary,darkLight} = Colors;
-const Signup = () => {
+const Signup = ({navigation}) => {
     const [hidePassword,setHidepassword]= useState(true);
     const [show, setShow] = useState(false);
     const [ date, setDate] = useState(new Date(2000, 0 ,1));
@@ -152,7 +152,7 @@ const Signup = () => {
                         <ExtraView>
                             <ExtraText>Already have an account?</ExtraText>
                             <TextLink>
-                                <TextLinkContent>Login</TextLinkContent>
+                                <TextLinkContent onPress={()=>navigation.navigate('Login')}>Login</TextLinkContent>
                             </TextLink>
                         </ExtraView>
                         </StyledFormArea>
