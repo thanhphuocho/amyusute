@@ -87,10 +87,7 @@ const Login = ({navigation}) => {
                             <Fontisto name="google" color={primary} size={25}/>
                             <ButtonText google={true}>Sign in with Google</ButtonText>
                         </StyledButton>
-                        <StyledButton facebook={true} onPress={handleSubmit}>
-                            <Fontisto name="facebook" color={primary} size={25}/>
-                            <ButtonText google={true}>Sign in with Google</ButtonText>
-                        </StyledButton>
+                        
                         <ExtraView>
                             <ExtraText>Don't have an Account already?</ExtraText>
                             <TextLink>

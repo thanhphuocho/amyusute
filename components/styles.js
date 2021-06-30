@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {View,Text,Image,TextInput} from 'react-native';
+
 import Constants from 'expo-constants';
 
 const StatusBarHeight = Constants.StatusBarHeight;
@@ -29,7 +29,7 @@ export const StyledContainer = styled.View`
 export const InnerContainer = styled.View`
     flex:1;
     width:100%;
-    alight-items:center;
+    align-items:center;
 `;
 export const WelcomeContainer = styled(InnerContainer)`
   padding: 25px;
@@ -92,7 +92,7 @@ export const WelcomeImage = styled.Image`
     background-color: ${secondary};
     padding: 15px;
     padding-left: 55px;
-    padding-ringht:55px;
+    padding-right:55px;
     border-radius: 5px;
     font-size: 16px;
     height: 60px;
