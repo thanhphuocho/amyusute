@@ -98,7 +98,7 @@ export const WelcomeImage = styled.Image`
     height: 60px;
     margin-vertical: 3px;
     margin-bottom: 10px;
-    color: &{tertiary};
+    color: ${tertiary};
  `;
 
  export const StyledInputLabel = styled.Text`

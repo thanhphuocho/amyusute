@@ -57,11 +57,11 @@ const Login = ({navigation}) => {
                            label="Email Address"
                            icon="mail"
                            placeholder="phuoc@gmail.com"
-                           placeholderTextColor=""
+                           placeholderTextColor={primary}
                            onChangeText={handleChange('email')}
                            onBlur={handleBlur('email')}
                            value={values.email}
-                           keyboardType="email-addresss"
+                           keyboardType="email-address"
                        />
 
                         <MyTextInput
@@ -69,7 +69,7 @@ const Login = ({navigation}) => {
                            label="Password"
                            icon="lock"
                            placeholder="*********"
-                           placeholderTextColor=""
+                           placeholderTextColor={primary}
                            onChangeText={handleChange('password')}
                            onBlur={handleBlur('password')}
                            value={values.password}

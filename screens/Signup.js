@@ -86,8 +86,7 @@ const Signup = ({navigation}) => {
                            label="Full Name"
                            icon="person"
                            placeholder="phuocBilly"
-                           placeholderTextColor=""
-                           onChangeText={handleChange('fullname')}
+                           placeholderTextColor={primary}                           onChangeText={handleChange('fullname')}
                            onBlur={handleBlur('fullname')}
                            value={values.fullname}
                            
@@ -96,7 +95,7 @@ const Signup = ({navigation}) => {
                            label="Email Address"
                            icon="mail"
                            placeholder="phuoc@gmail.com"
-                           placeholderTextColor=""
+                           placeholderTextColor={primary}
                            onChangeText={handleChange('email')}
                            onBlur={handleBlur('email')}
                            value={values.email}
@@ -106,10 +105,10 @@ const Signup = ({navigation}) => {
                            label="Date of Birth"
                            icon="calendar"
                            placeholder="YYYY - MM - DD "
-                           placeholderTextColor=""
+                           placeholderTextColor={primary}
                            onChangeText={handleChange('dateOfBirth')}
                            onBlur={handleBlur('dateOfBirth')}
-                           value={dob ? dob.toDateString():''}
+                           value={values.dateOfBirth}
                            isDate= {true}
                            editable={false}
                            showDatePicker = {showDatePicker}
@@ -121,7 +120,7 @@ const Signup = ({navigation}) => {
                            label="Password"
                            icon="lock"
                            placeholder="*********"
-                           placeholderTextColor=""
+                           placeholderTextColor={primary}
                            onChangeText={handleChange('password')}
                            onBlur={handleBlur('password')}
                            value={values.password}
@@ -135,7 +134,7 @@ const Signup = ({navigation}) => {
                            label="Confirm Password"
                            icon="lock"
                            placeholder="*********"
-                           placeholderTextColor=""
+                           placeholderTextColor={primary}
                            onChangeText={handleChange('confirmPassword')}
                            onBlur={handleBlur('confirmPassword')}
                            value={values.password}
