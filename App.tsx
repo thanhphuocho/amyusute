@@ -7,7 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import Login from './screens/Login';
 import Signup from './screens/Signup';
 import Welcome from './screens/Welcome';
-import Frofile from './HomeScreen/Frofile'
+
+
 import HomeScreen from './screens/HomeScreen';
 
 const Stack = createStackNavigator();
@@ -15,12 +16,12 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator  initialRouteName="Login">
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="HomeScreen">
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="HomeScreen" component={HomeScreen}/>
-        <Stack.Screen name="Frofile" component={Frofile}/>
+      
       </Stack.Navigator>
     </NavigationContainer>
   );

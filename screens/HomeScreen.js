@@ -7,17 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 
-
-
-function Home() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-       
-      <Text>Home!</Text>
-    </View>
-  );
-}
-//Home Page
+import Home from '../HomeScreen/Home';//Home Page
 
 
 import Search from '../HomeScreen/Search'
@@ -36,6 +26,9 @@ import Search from '../HomeScreen/Search'
 import Frofile from '../HomeScreen/Frofile';
   
 //Frofile
+
+
+
 const Tab = createBottomTabNavigator();
 
 const HomeScreen =() => {
@@ -74,9 +67,12 @@ const HomeScreen =() => {
                 <Text style={{color:focused? '#FFFFFF':'748c94', fontSize:12}}>Home</Text>
                 </View>)}}
  />
+        
+       
+        <Tab.Screen name="Search" component={Search}  options={{tabBarIcon:({focused})=>(<View style={{alignItems:'center',justifyContent:'center',top:10}}><Fontisto  name="train" resizeMode= "contain" style={{color: focused? '#FFFFFF':'#748c94',  }} size={25}></Fontisto><Text style={{color:focused? '#FFFFFF':'748c94', fontSize:12}}>Search</Text></View>)}}/>
+      
+        <Tab.Screen  name="Like" component={Like} options={{tabBarIcon:({focused})=>(<View style={{alignItems:'center',justifyContent:'center',top:10}}><Fontisto  name="heart" resizeMode= "contain" style={{color: focused? '#FFFFFF':'#748c94',  }} size={25}></Fontisto><Text style={{color:focused? '#FFFFFF':'748c94', fontSize:12}}>Like</Text></View>)}}/>
         <Tab.Screen name="Frofile" component={Frofile}  options={{tabBarIcon:({focused})=>(<View style={{alignItems:'center',justifyContent:'center',top:10}}><Fontisto  name="person" resizeMode= "contain" style={{color: focused? '#FFFFFF':'#748c94',  }} size={25}></Fontisto><Text style={{color:focused? '#FFFFFF':'748c94', fontSize:12}}>Frofile</Text></View>)}} />
-        <Tab.Screen name="Search" component={Search}  options={{tabBarIcon:({focused})=>(<View style={{alignItems:'center',justifyContent:'center',top:10}}><Fontisto  name="search" resizeMode= "contain" style={{color: focused? '#FFFFFF':'#748c94',  }} size={25}></Fontisto><Text style={{color:focused? '#FFFFFF':'748c94', fontSize:12}}>Search</Text></View>)}}/>
-        <Tab.Screen  name="Like" component={Like} options={{tabBarIcon:({focused})=>(<View style={{alignItems:'center',justifyContent:'center',top:10}}><Fontisto  name="like" resizeMode= "contain" style={{color: focused? '#FFFFFF':'#748c94',  }} size={25}></Fontisto><Text style={{color:focused? '#FFFFFF':'748c94', fontSize:12}}>Like</Text></View>)}}/>
       </Tab.Navigator>
 
   );
