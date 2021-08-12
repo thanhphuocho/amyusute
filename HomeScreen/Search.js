@@ -1,20 +1,17 @@
 import * as React from "react"
-import { Dimensions, StyleSheet, Text, View,Button } from "react-native"
+import { Dimensions, StyleSheet, Text, View } from "react-native"
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete"
-import MapView, { Callout, Circle, Marker,} from "react-native-maps"
-
-
-
-
+import MapView, { Callout, Circle, Marker } from "react-native-maps"
 
 export default function Search() {
+	
 	const [ pin, setPin ] = React.useState({
-		latitude: 35.6895,
-		longitude: 139.69171
+		latitude: 35.652832,
+		longitude: 139.839478
 	})
 	const [ region, setRegion ] = React.useState({
-		latitude: 35.6895,
-		longitude: 139.69171,
+		latitude: 35.652832,
+		longitude: 139.839478,
 		latitudeDelta: 0.0922,
 		longitudeDelta: 0.0421
 	})
@@ -23,7 +20,10 @@ export default function Search() {
 		<View style={{ marginTop: 50, flex: 1 }}>
 			<GooglePlacesAutocomplete
 				placeholder="Search"
-				
+				fetchDetails={true}
+				GooglePlacesSearchQuery={{
+					rankby: "distance"
+				}}
 				onPress={(data, details = null) => {
 					// 'details' is provided when fetchDetails = true
 					console.log(data, details)
@@ -35,9 +35,9 @@ export default function Search() {
 					})
 				}}
 				query={{
-					key: "AIzaSyDCcXiuAc47ovA-Qgzmq61QDdAx4uXexnU",
+					key: "AIzaSyAFsElQz4XoLiGo1ComfXNn9MZMTi0G-B4",
 					language: "ja",
-					components: "country:us",
+					components: "country:jp",
 					types: "establishment",
 					radius: 30000,
 					location: `${region.latitude}, ${region.longitude}`
@@ -50,8 +50,8 @@ export default function Search() {
 			<MapView
 				style={styles.map}
 				initialRegion={{
-					latitude: 35.6895,
-					longitude: 139.69171,
+					latitude: 35.652832,
+					longitude: 139.839478,
 					latitudeDelta: 0.0922,
 					longitudeDelta: 0.0421
 				}}
@@ -73,11 +73,7 @@ export default function Search() {
 					}}
 				>
 					<Callout>
-						<Button 
-						  title="I'm here"
-						  style={styles.Button}
-						  onPress={ ()=> Linking.openURL('https://reactnativecode.com') }
-						></Button>
+						<Text>I'm here</Text>
 					</Callout>
 				</Marker>
 				<Circle center={pin} radius={1000} />
@@ -89,21 +85,12 @@ export default function Search() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#000",
+		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "center"
 	},
 	map: {
 		width: Dimensions.get("window").width,
 		height: Dimensions.get("window").height
-	},
-	Button:{
-		height: 40,
-                        width: 40,
-                        borderRadius: 20,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: "#000000"
-		
 	}
 })
