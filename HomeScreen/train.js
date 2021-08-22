@@ -32,11 +32,6 @@ export default function Home({navigation}){
         {
             id: 1,
             name: "東京",
-
-            train:[{
-                trainId:1,
-                
-            }]
             
             },
             {
@@ -133,7 +128,7 @@ export default function Home({navigation}){
         
        
         
-         function renderRestaurantList(navigation) {
+         function renderRestaurantList() {
        
         
         return(
@@ -189,7 +184,7 @@ export default function Home({navigation}){
                 renderItem={({item}) =>(
                     <TouchableOpacity
                 style={{ }}
-                onPress={() => navigation.navigate("train", {
+                onPress={() => navigation.navigate("Map", {
                     item,
                    
                 })}

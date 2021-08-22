@@ -122,7 +122,7 @@ export default function Home({navigation}){
         function renderHeader(){
             return(
             
-            <View style={{ flexDirection: 'row', height: 40 }}>
+            <View style={{ flexDirection: 'row', height: 50 }}>
                 
                 <TouchableOpacity
                     style={{
