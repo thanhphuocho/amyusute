@@ -5,7 +5,7 @@ const avatar4 = require("../assets/images/fujikyuu.jpg");
 const back = require("../assets/png/png/back.png");
 const japan  = require("../assets/png/png/japan.png");
 const weather100  = require("../assets/png/png/weather/100.png")
-
+const backbutton = require("../assets/png/png/weather/back.png")
 
 export default{
     avatar1,
@@ -14,5 +14,6 @@ export default{
     avatar4,
     back,
     japan,
-    weather100
+    weather100,
+    backbutton
 }
