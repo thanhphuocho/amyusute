@@ -1,16 +1,15 @@
 import * as React from 'react';
-import { Text, View, } from 'react-native';
+import { Text, View,Image } from 'react-native';
 import {StyleSheet} from 'react-native';
 import{Octicons,Ionicons,Fontisto} from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-
+import {  images, SIZES, COLORS,FONTS,icons } from '../constants'
 
 
 import Home from '../HomeScreen/Home';//Home Page
 
-
-import Search from '../HomeScreen/Search'
+import main from '../HomeScreen/main';
   //Search
 
 import train from'../HomeScreen/train'
@@ -43,9 +42,9 @@ const HomeScreen =() => {
              right:20,
              elevation: 0,
              backgroundColor:'#6C9BD2',
-             
+             paddingTop:20,
              borderRadius: 15,
-             height:90,
+             height:80,
              
               shadowColor: '#7F5DF0',
               shadowOffset:{
@@ -61,18 +60,49 @@ const HomeScreen =() => {
         <Tab.Screen name="Home"
             component={Home} 
             options={{tabBarLabel:"Home",tabBarColor:"#009387",tabBarIcon:({focused})=>(
-            <View style={{alignItems:'center',justifyContent:'center',top:10}}>
-              <Fontisto  name="home" resizeMode= "contain" style={{color: focused? '#FFFFFF':'#748c94' }} size={25}>
-                </Fontisto>
-                <Text style={{color:focused? '#FFFFFF':'748c94'}}>Home</Text>
-                </View>)}}
+              <Image
+              source={images.home0}
+              resizeMode="contain"
+              style={{
+                  width: 30,
+                  height: 30,
+                  tintColor: focused ? COLORS.primary : COLORS.white
+              }}
+          />)}}
  />
         
        
-        <Tab.Screen name="Search" component={Search}  options={{tabBarIcon:({focused})=>(<View style={{alignItems:'center',justifyContent:'center',top:10}}><Fontisto  name="train" resizeMode= "contain" style={{color: focused? '#FFFFFF':'#748c94' }} size={25}></Fontisto><Text style={{color:focused? '#FFFFFF':'748c94'}}>Search</Text></View>)}}/>
+        <Tab.Screen name="main" component={main}  options={{tabBarIcon:({focused})=>(
+                        <Image
+                            source={images.train1}
+                            resizeMode="contain"
+                            style={{
+                                width: 30,
+                                height: 30,
+                                tintColor: focused ? COLORS.primary : COLORS.white
+                            }}
+                        />
+                        
+                        )}}/>
       
-        <Tab.Screen  name="Like" component={Like} options={{tabBarIcon:({focused})=>(<View style={{alignItems:'center',justifyContent:'center',top:10}}><Fontisto  name="heart" resizeMode= "contain" style={{color: focused? '#FFFFFF':'#748c94'}} size={25}></Fontisto><Text style={{color:focused? '#FFFFFF':'748c94', }}>Like</Text></View>)}}/>
-        <Tab.Screen name="Frofile" component={Frofile}  options={{tabBarIcon:({focused})=>(<View style={{alignItems:'center',justifyContent:'center',top:10}}><Fontisto  name="person" resizeMode= "contain" style={{color: focused? '#FFFFFF':'#748c94'  }} size={25}></Fontisto><Text style={{color:focused? '#FFFFFF':'748c94', }}>Frofile</Text></View>)}} />
+        <Tab.Screen  name="Like" component={Like} options={{tabBarIcon:({focused})=>(<Image
+                            source={images.heart}
+                            resizeMode="contain"
+                            style={{
+                                width: 30,
+                                height: 30,
+                                tintColor: focused ? COLORS.primary : COLORS.white
+                            }}
+                        />)}}/>
+        <Tab.Screen name="Frofile" component={Frofile}  options={{tabBarIcon:({focused})=>(<Image
+                            source={images.person}
+                            resizeMode="contain"
+                            style={{
+                                width: 30,
+                                height: 30,
+                                tintColor: focused ? COLORS.primary : COLORS.white
+                            }}
+                        />)}} />
       </Tab.Navigator>
 
   );

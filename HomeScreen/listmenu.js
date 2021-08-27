@@ -19,11 +19,11 @@ import { ListItem, Icon } from 'react-native-elements'
 
 
 
-const train  =({route,navigation})=>{
+const listmenu  =({route,navigation})=>{
 
     const [train,setTrain] = React.useState(null);
     
-    
+    const[Menu,setMenu] = React.useState(null)
     const [currentLocation, setCurrentLocation] = React.useState(null);
     React.useEffect(()=>{ 
         let {item,currentLocation} =  route.params
@@ -53,7 +53,6 @@ const train  =({route,navigation})=>{
                     style={{
                         width:50
                     }}
-                   
                 />
                 </TouchableOpacity>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -83,7 +82,7 @@ const train  =({route,navigation})=>{
         
     function renderBody()  {
         return(
-            <View style={{marginTop:SIZES.padding,marginBottom:SIZES.padding*15,borderRadius:50}}>
+            <View style={{marginTop:SIZES.padding,marginBottom:SIZES.padding*20,borderRadius:50}}>
                 <Image source={images.back} resizeMode="repeat"
                 style={{
                     width: "100%",
@@ -121,7 +120,7 @@ const train  =({route,navigation})=>{
                    <View
                     style={{
                         flex: 1,
-                        alignItems: 'center',
+                        paddingLeft:20,
                         justifyContent: 'center'
                     }}
                     >
@@ -131,56 +130,137 @@ const train  =({route,navigation})=>{
                            
                         height: 50,
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        width:300,
+                        justifyContent: 'space-evenly',
+                        width:210,
                         borderRadius: SIZES.radius,
                            backgroundColor:"#F7B939",
+                        flexDirection:"row",
+                           
+
+                           borderRadius:2,
+                           ...styles.shadow
+                       }}
+                   ><Image source={images.pin} resizeMode="contain"
+                   style={{
+                    position:"absolute",
+                    left:-60,
+                    width:"100%",
+                    height:25,
+                    justifyContent:"center",
+                    alignItems:"center"
+              }}/>
+                       <Text style={{...FONTS.h2,fontWeight:"500",position:"absolute",left:70}}>{train?.name}</Text>
+                       </View>
+                       
+                       </View>
+
+
+
+
+                       <View
+                    style={{
+                       
+                        paddingLeft:200,
+                        justifyContent: 'center'
+                    }}
+                    >
+                   <View
+                       style={{
+                           
+                           
+                        height: 35,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width:145,
+                        borderRadius: SIZES.radius,
+                           backgroundColor:"#6C9BD2",
                           
                            
 
                            borderRadius:2,
                            ...styles.shadow
                        }}
-                   >
-                       <Image source={images.train} resizeMode="contain"
-                   style={{
-                    position:"absolute",
-                    left:-100,
-                    width:"100%",
-                    height:25,
-                    justifyContent:"center",
-                    alignItems:"center"
-              }}/>
-              <Text style={{...FONTS.h2,fontWeight:"500"}}>{train?.name}</Text>
+                   ><Text style={{...FONTS.h4}}>{train?.read}</Text>
                        </View>
+                       
                        </View>
+                   
 
 
-
-
-                      <ScrollView style={{marginTop:SIZES.padding*3}}>
+            
+                       <ScrollView style={{marginTop:SIZES.padding*3}}>
                        <View style={{}} >
-                      {train?.train.map((item,index)=>(
+                      {train?.menu.map((item,index)=>(
                            <View 
                            key={`train-${index}`}
                            style={{alignItems:"center",}}>
                                 <View>
                                     <TouchableOpacity
-                                    onPress={() => navigation.navigate("listmenu", {
-                                        item,})}
+                                    onPress={() => navigation.navigate("store", {
+                                        item,train:train})}
                                             style={{
                                                 
                                                 bottom: 0,
-                                                height: 60,
-                                                width: 300,
-                                                backgroundColor:"#021940",
+                                                
+                                                
+                                                marginBottom:SIZES.padding*3,
                                                 alignItems:"center",
                                                 justifyContent:"center",
                     
                                                 borderRadius:2,
                                                 ...styles.shadow
                                             }}>
-                                    <Text style={{...FONTS.h3,color:"#FFFFFF",alignItems:"center",justifyContent:"center"}}>{item.name}</Text>
+                                     <Image
+                        source={item.photo}
+                        resizeMode="cover"
+                        style={{
+                            width: 300,
+                            flexDirection:"row",
+                           
+                            height: 180,
+                            justifyContent:'center',
+                            alignItems: 'center',
+                            borderTopRightRadius: SIZES.radius,
+                            borderTopLeftRadius: SIZES.radius,
+                        }}
+                    />
+                    <View
+                        style={{
+                            position:"absolute",
+                            left:0,
+                            bottom: 70,
+                            height: 30,
+                            width:75,
+                            backgroundColor: COLORS.white,
+                            borderTopRightRadius: SIZES.radius*2,
+                            flexDirection:"row",
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            ...styles.shadow
+                        }}
+                    ><Image source={images.walking} resizeMode="cover" style={{width:25,height:25}}></Image>
+                        <Text style={{ ...FONTS.h5 }}>{item.duration}</Text>
+                        
+                    </View>
+
+                    <View
+                    style={{
+                        position:"relative",
+                        top:0,
+                        width:300,
+                        height:70,
+                        backgroundColor:COLORS.white,
+                        alignItems:"center",
+                        justifyContent:"center",
+                        borderBottomRightRadius:SIZES.radius,
+                        borderBottomLeftRadius:SIZES.radius,
+                        ...styles.shadow
+                    }}
+                    ><Text style={{...FONTS.h5,fontWeight:"800",position:"absolute",left:20,bottom:10,width:150}}>{item.name}</Text>
+                    <View style={{flexDirection:"row",...FONTS.h5,position:"absolute",left:30,bottom:45}}>
+                    <Text style={{color:"#0057BC",fontSize:50,position:"absolute",bottom:-15,right:90}}>・</Text>
+                    <Text>営業中:{item.time}</Text></View>
+                    </View>
                                     </TouchableOpacity>
                                 </View>
                            </View>
@@ -189,6 +269,7 @@ const train  =({route,navigation})=>{
                     </View>
                     
                     </ScrollView>
+                      
               
             </View>
             
@@ -211,7 +292,7 @@ const train  =({route,navigation})=>{
             
         )}
     
-export default train;
+export default listmenu;
           
     
 

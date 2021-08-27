@@ -2,6 +2,7 @@ import * as React from "react"
 import { Dimensions, StyleSheet, Text, View } from "react-native"
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete"
 import MapView, { Callout, Circle, Marker } from "react-native-maps"
+import MapViewDirections from "react-native-maps-directions";
 
 export default function App() {
 	const [ pin, setPin ] = React.useState({
@@ -56,6 +57,18 @@ export default function App() {
 				}}
 				provider="google"
 			>
+				
+				
+				
+				<MapViewDirections
+			    origin={fromLocation}
+			    destination={toLocation}
+			    apikey="AIzaSyAFsElQz4XoLiGo1ComfXNn9MZMTi0G-B4"
+			    strokeWidth={5}
+			    strokeColor={COLORS.primary}
+			    optimizeWaypoints={true}
+				//map diretion
+			/>
 				<Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
 				<Marker
 					coordinate={pin}

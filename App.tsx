@@ -10,6 +10,9 @@ import Welcome from './screens/Welcome';
 import train from './HomeScreen/train'
 import Search from './HomeScreen/Search';
 import HomeScreen from './screens/HomeScreen';
+import listmenu from './HomeScreen/listmenu';
+import store from './HomeScreen/store';
+import main from './HomeScreen/main';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +26,10 @@ function App() {
         <Stack.Screen name="HomeScreen" component={HomeScreen}/>
         <Stack.Screen name="train" component={train}/>
         <Stack.Screen name="Search" component={Search}/>
+        <Stack.Screen name="listmenu" component ={listmenu}/>
+        <Stack.Screen name="store" component ={store}/>
+        <Stack.Screen name="main" component ={main}/>
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

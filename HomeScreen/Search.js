@@ -17,7 +17,12 @@ import { ListItem, Icon } from 'react-native-elements'
 
 
 export default function Search ({navigation}){
+    const [train, setTrain] = React.useState(restaurantData)
+    const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
+   const [searchQuery, setSearchQuery] = React.useState('');
+ 
+   const onChangeSearch = query => setSearchQuery(query);
 
     const initialCurrentLocation = {
         streetName: "Kuching",
@@ -34,54 +39,134 @@ export default function Search ({navigation}){
                 id: 1,
                 name: "ＪＲ",
 
+
                 train:[{
                   trainId:1,
                   name:"秋葉原",
+                  read:"アキハバラ",
+                  trainLocation:{
+                      latitude: 35.69841783163553,
+                      longitude:139.77307169815447
+                  },
+                  menu:[
+                    {
+                    menuId:1,
+                    name:"カラオケまねきねこ 秋葉原店",
+                    duration: "6分",
+                    photo:images.akikara,
+                    time:"11時-23時",
+                    location:{
+                        latitude:35.70172331664533,
+                        longitude:139.7711730575202
+                    }},
+                  {
+                    menuId:2,
+                    name:"アニメイト秋葉原本館",
+                    duration:"4分",
+                    photo:images.akiani,
+                    time:"11時-20時",
+                    location:{
+                        latitude:35.70063258371753, 
+                        longitude:139.77169415433187
+                    }
+                    },
+                    {
+                        menuId:3,
+                        name:"東京ドームシティ アトラクションズ",
+                        duration: "6分",
+                        time:"11時-20時",
+                        photo:images.akidome,
+                        location:{
+                            latitude:35.70512221891897, 
+                            longitude:139.7540310073553
+                        }},
+                    ]
                  },
 
                  {
                     trainId:2,
-                    name:"池袋"
+                    name:"池袋",
+                    trainLocation:{
+                        latitude: 35.69841783163553,
+                        longitude:139.77307169815447
+                    },
+                    menu:[
+                        {
+                        menuId:1,
+                        name:"カラオケまねきねこ 秋葉原店",
+                        duration: "6分",
+                        location:{
+                            latitude:35.70172331664533,
+                            longitude:139.7711730575202
+                        }},
+                      {
+                        menuId:2,
+                        name:"アニメイト秋葉原本館",
+                        duration:"4分",
+                        location:{
+                            latitude:35.70063258371753, 
+                            longitude:139.77169415433187
+                        }
+                        },
+                        {
+                            menuId:3,
+                            name:"東京ドームシティ アトラクションズ",
+                            duration: "6分",
+                            location:{
+                                latitude:35.70512221891897, 
+                                longitude:139.7540310073553
+                            }},
+                        ]
                  },
                  {
                      trainId:3,
-                     name:"上野"
+                     name:"上野",
+                     read:"ウエノ"
                  },
                  {
                      trainId:4,
-                     name:"鶯谷"
+                     name:"鶯谷",
+                     read:"ウグスダニ"
                  },
                  {
                      trainId:5,
-                     name:"恵比寿"
+                     name:"恵比寿",
+                     read:"ウグスダニ"
                  },
                  {
                      trainId:6,
-                     name:"大崎"
+                     name:"大崎",
+                     read:"ウグスダニ"
                  },
                  {
                      trainId:7,
                      name:"大塚"
+                     ,read:"ウグスダニ"
                  },
                  {
                      trainId:8,
-                     name:"御徒町"
+                     name:"御徒町",
+                     read:"ウグスダニ"
                  },
                  {
                      trainId:9,
-                     name:"神田"
+                     name:"神田",
+                     read:"ウグスダニ"
                  },
                  {
                      trainId:10,
-                     name:"五反田"
+                     name:"五反田",
+                     read:"ウグスダニ"
                  },
                  {
                      trainId:11,
-                     name:"駒込"
+                     name:"駒込",
+                     read:"ウグスダニ"
                  },
                  {
                      trainId:12,
-                     name:"品川"
+                     name:"品川",
+                     read:"ウグスダニ"
                  },
                  {
                      trainId:13,
@@ -160,7 +245,7 @@ export default function Search ({navigation}){
                 },
                 {
                     id: 2,
-                    name: "東京地下鉄（東京メトロ）",
+                    name: "東京メトロ",
                     train:[{
                         trainId:1,
                         name:"丸ノ内線",
@@ -975,12 +1060,7 @@ export default function Search ({navigation}){
         
     
         
-           const [train, setTrain] = React.useState(restaurantData)
-         const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
-    
-        const [searchQuery, setSearchQuery] = React.useState('');
-      
-        const onChangeSearch = query => setSearchQuery(query);
+         
       
        
 
@@ -999,6 +1079,7 @@ export default function Search ({navigation}){
                         justifyContent: 'center',
                         
                     }}
+                    onPress={() => navigation.navigate("HomeScreen")}
                 > 
                 <Image
                         source={images.weather100}
@@ -1006,6 +1087,7 @@ export default function Search ({navigation}){
                         style={{
                             width:50
                         }}
+                       
                     />
                     </TouchableOpacity>
                     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -1039,14 +1121,28 @@ export default function Search ({navigation}){
             )}
 
         
-       
+            function renderBody()  {
+                return(
+                    <View style={{borderRadius:50,position:"absolute",top:90,zIndex: 2}}>
+                        
+                        <TouchableOpacity style={{width:50,paddingLeft:SIZES.padding*2,justifyContent:"center"}}
+                        onPress={()=> navigation.goBack()}>
+                            <Image
+                               source={images.backbutton}
+                               resizeMode="contain"
+                               style={{width:30,height:30}}
+                            ></Image>
+                        </TouchableOpacity>
+                        
+                        </View>
+                )}
         
          function renderRestaurantList() {
        
         
         return(
            
-            <View  style={{marginTop:SIZES.padding*2,marginBottom:SIZES.padding*30,borderRadius:50}}>
+            <View  style={{marginTop:SIZES.padding*2,marginBottom:SIZES.padding*20,borderRadius:50}}>
                 
                 <Image source={images.back} resizeMode="repeat"
                 style={{
@@ -1055,7 +1151,7 @@ export default function Search ({navigation}){
                     height: "100%",
                 
                     }}/>
-                
+              
                 
                 <View>
                 
@@ -1072,7 +1168,7 @@ export default function Search ({navigation}){
 
                 <View　style={{flexDirection:"row",justifyContent:"center",marginBottom:SIZES.padding*2}}>
                     <View style={{backgroundColor:"#6C9BD2",width:50, borderRadius: SIZES.radius*50,height:50,}}>
-                    <Text style={{...FONTS.h3,justifyContent:"center",alignItems:"centers",position:"absolute",paddingLeft:SIZES.padding*1.7,paddingTop:SIZES.padding}} >地</Text>
+                    <Text style={{...FONTS.h3,justifyContent:"center",alignItems:"center",position:"absolute",paddingLeft:SIZES.padding*1.7,paddingTop:SIZES.padding}} >地</Text>
                     </View>
                     <View style={{backgroundColor:"#F7B939",width:50, borderRadius: SIZES.radius*50,height:50}}>
                     <Text style={{...FONTS.h3,justifyContent:"center",alignItems:"centers",position:"absolute",paddingLeft:SIZES.padding*1.7,paddingTop:SIZES.padding}} >方</Text>
@@ -1166,7 +1262,7 @@ export default function Search ({navigation}){
         return(
             <SafeAreaView style={styles.container}>
                    {renderHeader()}
-                   
+                   {renderBody()}
                   
                    {renderRestaurantList()}
                    

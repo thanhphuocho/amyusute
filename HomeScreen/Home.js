@@ -110,6 +110,8 @@ export default function Home({navigation}){
     
 
     
+        const [categories, setCategories] = React.useState(categoryData)
+        const [selectedCategory, setSelectedCategory] = React.useState(null)
         const [searchQuery, setSearchQuery] = React.useState('');
       
         const onChangeSearch = query => setSearchQuery(query);
