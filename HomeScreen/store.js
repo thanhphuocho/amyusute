@@ -97,7 +97,7 @@ const store = ({ route, navigation }) => {
     
 
     
-    function renderMap(item) {
+    function renderMap() {
         const destinationMarker = () => (
             <Marker
                 coordinate={toLocation}
@@ -196,6 +196,44 @@ const store = ({ route, navigation }) => {
     
         
      }
+   
+     const googleURL = "https://www.google.com/maps/search/?api=1&query="
+     function renderfooter(){
+         return(
+        <View
+        style={{
+            height: 50,
+            width: 50,
+            borderRadius: 20,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: COLORS.white,
+            marginBottom:20,
+            marginLeft:20
+        }}
+    >
+         <View
+            style={{
+                height: 30,
+                width: 30,
+                borderRadius: 15,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: COLORS.blue,
+            }}
+        ><TouchableOpacity onPress={()=>Linking.openURL(googleURL)} >
+            <Image
+                source={images.mapicon}
+                style={{
+                    width: 25,
+                    height: 25,
+                    tintColor: COLORS.white
+                }}
+            /></TouchableOpacity>
+        </View>
+        </View>
+        
+         )}
     
 
         return (
@@ -203,7 +241,7 @@ const store = ({ route, navigation }) => {
                 {renderHeader()}
                 {renderBody()}
                {renderMap()}
-              
+               {renderfooter()}
                 
             </View>
         )
@@ -230,3 +268,4 @@ const styles = StyleSheet.create({
 })
 
 export default store
+

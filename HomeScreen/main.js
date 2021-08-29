@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { isIphoneX } from 'react-native-iphone-x-helper'
 import{Octicons,Ionicons,Fontisto} from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 import {  images, SIZES, COLORS,FONTS,icons } from '../constants'
 
@@ -90,13 +91,14 @@ const main = ({ navigation }) => {
                     justifyContent: 'center'
                 }}
             >
-                <Fontisto
-                    name="twitch"
+                <AntDesign
+                    name="bells"
                     resizeMode="contain"
                     style={{
                         fontSize:25
                     }}
                 />
+
             </TouchableOpacity>
             </View>
         )};
@@ -161,7 +163,7 @@ function renderBody(){
             />
             <View style={{backgroundColor:"#A3A3A3",width:350, height:150,position:"relation",bottom:110}}>
                 <Image source={images.search} resizeMode="contain" style={{width:140,position:"absolute",bottom:-178}} />
-                <View style={{ backgroundColor:COLORS.white,width:180,height:35,borderRadius:SIZES.radius,justifyContent:"center",paddingLeft:10,...styles.shadow,position:"relative",top:60,left:150}}><TouchableOpacity onPress={()=>navigation.navigate('')}><Text style={{...FONTS.h5,color:"#958C8C"}}>Search...</Text></TouchableOpacity></View>
+                <View style={{ backgroundColor:COLORS.white,width:180,height:35,borderRadius:SIZES.radius,justifyContent:"center",paddingLeft:10,...styles.shadow,position:"relative",top:60,left:150}}><TouchableOpacity onPress={()=>navigation.navigate('address')}><Text style={{...FONTS.h5,color:"#958C8C"}}>Search...</Text></TouchableOpacity></View>
                 <View style={{justifyContent:"center",paddingLeft:10,...styles.shadow,position:"relative",top:60,left:150}}><Text style={{...FONTS.h6}} >人気の駅：下北沢、渋谷</Text ></View>
             </View>
             <View style={{backgroundColor:"#FAC44A" ,width:350, height:150,position:"relation",bottom:90  }}>

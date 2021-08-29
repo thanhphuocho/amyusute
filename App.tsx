@@ -13,6 +13,8 @@ import HomeScreen from './screens/HomeScreen';
 import listmenu from './HomeScreen/listmenu';
 import store from './HomeScreen/store';
 import main from './HomeScreen/main';
+import address from './HomeScreen/address';
+
 
 const Stack = createStackNavigator();
 
@@ -29,6 +31,7 @@ function App() {
         <Stack.Screen name="listmenu" component ={listmenu}/>
         <Stack.Screen name="store" component ={store}/>
         <Stack.Screen name="main" component ={main}/>
+        <Stack.Screen name="address" component ={address}/>
         
       </Stack.Navigator>
     </NavigationContainer>

@@ -11,6 +11,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { Searchbar } from 'react-native-paper';
 import{Octicons,Ionicons,Fontisto} from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons'; 
 import {  images, SIZES, COLORS,FONTS,icons } from '../constants'
 import { ListItem, Icon } from 'react-native-elements'
 
@@ -133,17 +134,19 @@ export default function Home({navigation}){
                         justifyContent: 'center'
                     }}
                 > 
-                <Fontisto
-                        name="day-cloudy"
-                        resizeMode="contain"
-                        style={{
-                            fontSize:25
-                        }}
-                    />
+               <Image
+               
+               source={images.weather100}
+               resizeMode="contain"
+               style={{
+                   width:50
+               }}
+              
+               />
                     </TouchableOpacity>
                     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                     <View>
-                        <Searchbar  placeholder="Search"
+                        <Searchbar  placeholder="検索"
                                     onChangeText={onChangeSearch}
                                     value={searchQuery} style={{ ...FONTS.h3,width: '70%',
                                     height: "100%",
@@ -160,8 +163,8 @@ export default function Home({navigation}){
                         justifyContent: 'center'
                     }}
                 >
-                    <Fontisto
-                        name="twitch"
+                    <AntDesign
+                        name="bells"
                         resizeMode="contain"
                         style={{
                             fontSize:25
@@ -178,7 +181,7 @@ export default function Home({navigation}){
        
         
         return(
-            <View  style={{marginTop:SIZES.padding*3,marginBottom:SIZES.padding*25,}}>
+            <View  style={{marginTop:SIZES.padding*2,marginBottom:SIZES.padding*20,}}>
                 <FlatList
                 
                 data={restaurantData}

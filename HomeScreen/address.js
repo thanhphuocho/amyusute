@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import {
     SafeAreaView,
     View,
@@ -6,37 +6,27 @@ import {
     StyleSheet,
     TouchableOpacity,
     Image,
-    FlatList
+    FlatList,
+    ScrollView,
+   TextInput
 } from "react-native";
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Searchbar } from 'react-native-paper';
 import{Octicons,Ionicons,Fontisto} from '@expo/vector-icons';
 import {  images, SIZES, COLORS,FONTS,icons } from '../constants'
 import { ListItem, Icon } from 'react-native-elements'
-import { AntDesign } from '@expo/vector-icons';
+import axios from "axios";
 
 
 
-export default function Search ({navigation,route}){
-    
 
-   const [searchQuery, setSearchQuery] = React.useState(null);
-
- 
-  
-    
-    
-   
-  
-    //icons
-  
+const address  =({navigation})=>{
     const restaurantData = [
         {
         
                 id: 1,
                 name: "ＪＲ",
-                
-                
 
 
                 train:[{
@@ -1056,215 +1046,97 @@ export default function Search ({navigation,route}){
     
 
         ]
-        
-    
-        
-         
+//
+    useEffect(() => {
+       
+        fetch("https://tetsudo.rti-giken.jp/free/delay.json")
+          .then((response) => response.json())
+          .then((responseJson) => {
+            setFilteredDataSource(responseJson);
+            setMasterDataSource(responseJson);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+          return()=>{}
+      }, []);
       
-       
+      const [filteredDataSource, setFilteredDataSource] = useState([]);
+      const [masterDataSource, setMasterDataSource] = useState([]);
 
+    
+      const [search, setSearch] = useState('');
 
-
-        
-        function renderHeader(){
-            return(
+      
+        const searchFilter = (text) => {
             
-            <View style={{ flexDirection: 'row', height: 40,}}>
-                
-                <TouchableOpacity
-                    style={{
-                        width: 50,
-                        paddingLeft: SIZES.padding * 2,
-                        justifyContent: 'center',
-                        
-                    }}
-                    onPress={() => navigation.navigate("HomeScreen")}
-                > 
-                <Image
-                        source={images.weather100}
-                        resizeMode="contain"
-                        style={{
-                            width:50
-                        }}
-                       
-                    />
-                    </TouchableOpacity>
-                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    
-                </View>
-                <TouchableOpacity
-                    style={{
-                        width: 50,
-                        paddingRight: SIZES.padding * 2,
-                        justifyContent: 'center'
-                    }}
-                >
-                   <AntDesign
-                    name="bells"
-                    resizeMode="contain"
-                    style={{
-                        fontSize:25
-                    }}
-                />
-
-                   
-                </TouchableOpacity>
-                </View>
-            )}
-
+            if (text) {
+              const newData = masterDataSource.filter ((item) =>{
+                const itemData = item.name
+                  ? item.name.toUpperCase()
+                  : ''.toUpperCase();
+                const textData = text.toUpperCase();
+                return itemData.indexOf(textData) > -1;
+              });
+              setFilteredDataSource(newData);
+              setSearch(text);
+            } else {
+              setFilteredDataSource(masterDataSource);
+              setSearch(text);
+            }
+          };
         
-            function renderBody()  {
-                return(
-                    <View style={{borderRadius:50,position:"absolute",top:90,zIndex: 2}}>
-                        
-                        <TouchableOpacity style={{width:50,paddingLeft:SIZES.padding*2,justifyContent:"center"}}
-                        onPress={()=> navigation.goBack()}>
-                            <Image
-                               source={images.backbutton}
-                               resizeMode="contain"
-                               style={{width:30,height:30}}
-                            ></Image>
-                        </TouchableOpacity>
-                        
-                        </View>
-                )}
         
-         function renderRestaurantList() {
-       
-        
+    function renderHeader(){
         return(
-           
-            <View  style={{marginTop:SIZES.padding*2,marginBottom:SIZES.padding*20,borderRadius:50}}>
-                
-                <Image source={images.back} resizeMode="repeat"
-                style={{
-                    width: "100%",
-                    position:"absolute",
-                    height: "100%",
-                
-                    }}/>
-              
-                
-                <View>
-                
-                <Image source={images.japan} resizeMode="contain"
-
-                 style={{
-                        marginTop:SIZES.padding*2,
-                        marginBottom:SIZES.padding*3,
-                        width:"100%",
-                        height:50,
-                        justifyContent:"center",
-                        alignItems:"center"
-                  }}/>
-
-                <View　style={{flexDirection:"row",justifyContent:"center",marginBottom:SIZES.padding*2}}>
-                    <View style={{backgroundColor:"#6C9BD2",width:50, borderRadius: SIZES.radius*50,height:50,}}>
-                    <Text style={{...FONTS.h3,justifyContent:"center",alignItems:"center",position:"absolute",paddingLeft:SIZES.padding*1.7,paddingTop:SIZES.padding}} >地</Text>
-                    </View>
-                    <View style={{backgroundColor:"#F7B939",width:50, borderRadius: SIZES.radius*50,height:50}}>
-                    <Text style={{...FONTS.h3,justifyContent:"center",alignItems:"centers",position:"absolute",paddingLeft:SIZES.padding*1.7,paddingTop:SIZES.padding}} >方</Text>
-                    </View>
-                    <View style={{backgroundColor:"#6C9BD2",width:50, borderRadius: SIZES.radius*50,height:50,}}>
-                    <Text style={{...FONTS.h3,justifyContent:"center",alignItems:"centers",position:"absolute",paddingLeft:SIZES.padding*1.7,paddingTop:SIZES.padding}} >を</Text>
-                    </View>
-                    <View style={{backgroundColor:"#F7B939",width:50, borderRadius: SIZES.radius*50,height:50,}}>
-                    <Text style={{...FONTS.h3,justifyContent:"center",alignItems:"centers",position:"absolute",paddingLeft:SIZES.padding*1.7,paddingTop:SIZES.padding}} >選</Text>
-                    </View>
-                    <View style={{backgroundColor:"#6C9BD2",width:50, borderRadius: SIZES.radius*50,height:50,}}>
-                    <Text style={{...FONTS.h3,justifyContent:"center",alignItems:"centers",position:"absolute",paddingLeft:SIZES.padding*1.7,paddingTop:SIZES.padding}} >択</Text>
-                    </View>
-                </View> 
+            <View style={{height:"100%"}}>
+            <View style={{backgroundColor:"#A3A3A3",width:"100%", height:150,}}>
+                <Image source={images.search} resizeMode="contain" style={{width:140,position:"absolute",bottom:-178}} />
+                <View style={{ backgroundColor:COLORS.white,width:180,height:35,borderRadius:SIZES.radius,justifyContent:"center",paddingLeft:10,...styles.shadow,position:"relative",top:60,left:150}}>
+                   <TextInput value={search} placeholder="Seach" onChangeText={(text)=> searchFilter(text)} style={{...FONTS.h5,color:"#958C8C"}}></TextInput>
                 </View>
-                <FlatList 
-                style={{paddingTop:SIZES.padding*2}}
-                data={restaurantData}
-                
-                
-                keyExtractor={(item) => item.id}
-                renderItem={({item}) =>(
-                    <TouchableOpacity
-                style={{ }}
-                onPress={() => navigation.navigate("train", {
-                    item,
-                    currentLocation
-                })}
-            >   
-                {/* Image */}
-                <View 
-                    style={{
-                        justifyContent:'center',
-                        alignItems: 'center',
-                    
-                        
-                    }}
-                >
-                    
-
-                  
-
-
-                    <View
-                       
-                        
-                        style={{
-                            width: "100%",
-                            flexDirection:"row",
-                            borderRadius: SIZES.radius*5,
-                            height: 60,
-                            justifyContent:'center',
-                            alignItems: 'center',
-                            
-                           
-                            
-                        }}
-                    />
-                    <TouchableOpacity onPress={() => navigation.navigate("train", {
-                    item,})}
-                        style={{
-                            position: 'absolute',
-                            bottom: 0,
-                            height: 60,
-                            width: 300,
-                            backgroundColor:"#F7B939",
-                            paddingLeft:SIZES.padding*2,
-                            paddingTop:SIZES.padding*1.5,
-                            marginBottom:SIZES.padding*2,
-                            
-
-                            borderRadius:2,
-                            ...styles.shadow
-                        }}
-                    >
-                        <Text style={{ ...FONTS.h2,color:"#ffffff" }}>{item.name}</Text>
-                    </TouchableOpacity>
-                
-                </View>
-                </TouchableOpacity>
-                )}
-            />
-                    
-                
+                <View style={{justifyContent:"center",paddingLeft:10,...styles.shadow,position:"relative",top:60,left:150}}>
+                <Text style={{...FONTS.h2,fontWeight:"500"}}></Text><Text style={{...FONTS.h6}} >人気の駅：下北沢、渋谷</Text ></View>
+            
             </View>
+            <View style={{paddingLeft:SIZES.padding*3, justifyContent:"center",backgroundColor:COLORS.white}}>
+                <View style={{justifyContent:"center",alignItems:"center",paddingTop:20,width:"100%"}}><Text　style={{...FONTS.h3,color:"#1E88E5"}}>駅</Text>
+                <Text style={{marginTop:10,backgroundColor:"#1E88E5",width:"100%",height:2}}></Text>
+                </View>
+            <FlatList
+             style={{paddingTop:SIZES.padding*2}}
+                data={filteredDataSource}
+                
+                
+                keyExtractor={(item,index) => index.toString}
+                renderItem={({item}) =>(
+                    <View style={{height:30,width:"100%"}}><Image source={images.train} resizeMode="contain" style={{position:"absolute",width:25,height:25}} /><Text style={{...FONTS.h3,paddingLeft:SIZES.padding*4}}>{item.name.toUpperCase()}</Text>
+                    <Text style={{backgroundColor:"#000000",width:"100%",height:1,marginTop:5}}></Text>
+                    </View>
+                )}
+             
+           />
+           </View>
+           </View>
         )
     }
 
-   
+    return(
+        <SafeAreaView style={styles.container}>
+        {renderHeader()}
+       
+        
+        
+       
+        
+        
+        </SafeAreaView>
+ 
+    )
 
-        return(
-            <SafeAreaView style={styles.container}>
-                   {renderHeader()}
-                   {renderBody()}
-                  
-                   {renderRestaurantList()}
-                   
-                   </SafeAreaView>
-            
-        )}
-    
-  
-            
-    
+    }
+
+export default address
 
 const styles = StyleSheet.create({
     container: {

@@ -37,13 +37,13 @@ const HomeScreen =() => {
            showLabel:false,
            style:{
              position:'absolute',
-             bottom:25,
-             left:20,
-             right:20,
+             bottom:0,
+             left:0,
+             right:0,
              elevation: 0,
-             backgroundColor:'#6C9BD2',
-             paddingTop:20,
-             borderRadius: 15,
+             backgroundColor:'#fffff6',
+             paddingTop:0,
+
              height:80,
              
               shadowColor: '#7F5DF0',
@@ -66,7 +66,7 @@ const HomeScreen =() => {
               style={{
                   width: 30,
                   height: 30,
-                  tintColor: focused ? COLORS.primary : COLORS.white
+                  tintColor: focused ? COLORS.blue : COLORS.brand
               }}
           />)}}
  />
@@ -79,7 +79,7 @@ const HomeScreen =() => {
                             style={{
                                 width: 30,
                                 height: 30,
-                                tintColor: focused ? COLORS.primary : COLORS.white
+                                tintColor: focused ? COLORS.blue : COLORS.brand
                             }}
                         />
                         
@@ -91,7 +91,7 @@ const HomeScreen =() => {
                             style={{
                                 width: 30,
                                 height: 30,
-                                tintColor: focused ? COLORS.primary : COLORS.white
+                                tintColor: focused ? COLORS.blue : COLORS.brand
                             }}
                         />)}}/>
         <Tab.Screen name="Frofile" component={Frofile}  options={{tabBarIcon:({focused})=>(<Image
@@ -100,7 +100,7 @@ const HomeScreen =() => {
                             style={{
                                 width: 30,
                                 height: 30,
-                                tintColor: focused ? COLORS.primary : COLORS.white
+                                tintColor: focused ? COLORS.blue : COLORS.brand
                             }}
                         />)}} />
       </Tab.Navigator>

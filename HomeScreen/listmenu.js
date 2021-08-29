@@ -14,13 +14,14 @@ import { Searchbar } from 'react-native-paper';
 import{Octicons,Ionicons,Fontisto} from '@expo/vector-icons';
 import {  images, SIZES, COLORS,FONTS,icons } from '../constants'
 import { ListItem, Icon } from 'react-native-elements'
+import { AntDesign } from '@expo/vector-icons';
 
 
 
 
 
 const listmenu  =({route,navigation})=>{
-
+   
     const [train,setTrain] = React.useState(null);
     
     const[Menu,setMenu] = React.useState(null)
@@ -65,13 +66,14 @@ const listmenu  =({route,navigation})=>{
                     justifyContent: 'center'
                 }}
             >
-                <Fontisto
-                    name="twitch"
+                <AntDesign
+                    name="bells"
                     resizeMode="contain"
                     style={{
                         fontSize:25
                     }}
                 />
+
             </TouchableOpacity>
             </View>
         )}
