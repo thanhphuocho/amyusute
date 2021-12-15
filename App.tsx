@@ -14,14 +14,14 @@ import listmenu from './HomeScreen/listmenu';
 import store from './HomeScreen/store';
 import main from './HomeScreen/main';
 import address from './HomeScreen/address';
-
+import Frofile from './HomeScreen/Frofile';
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="HomeScreen">
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Welcome" component={Welcome} />
@@ -32,7 +32,7 @@ function App() {
         <Stack.Screen name="store" component ={store}/>
         <Stack.Screen name="main" component ={main}/>
         <Stack.Screen name="address" component ={address}/>
-        
+        <Stack.Screen name="Frofile" component ={Frofile}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

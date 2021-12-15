@@ -191,7 +191,7 @@ export default function Home({navigation}){
                 renderItem={({item}) =>(
                     <TouchableOpacity
                 style={{ marginBottom: SIZES.padding * 2 }}
-                onPress={() => navigation.navigate("Login", {
+                onPress={() => navigation.navigate("", {
                     item,
                    
                 })}
