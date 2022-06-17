@@ -197,7 +197,7 @@ const store = ({ route, navigation }) => {
         
      }
    
-     const googleURL = "https://www.google.com/maps/search/?api=1&query="
+     const googleURL = `https://www.google.com/maps/search/?api=1&query=${latitude,longitude}`
      function renderfooter(){
          return(
         <View
